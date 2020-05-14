@@ -77,15 +77,15 @@ void Server(char* path)
 
 		ReleaseSemaphore(Semaphores[0], 1, NULL);  
 
-		cout << "w1\n";
+		//cout << "w1\n";
 		int NumberOfBlocks = message.size() / bufferSize + 1;				
 		WriteFile(hMyPipe, &NumberOfBlocks, sizeof(NumberOfBlocks), &NumberOfBytesWritten, (LPOVERLAPPED)NULL);
 
-		cout << "w2\n";
+		//cout << "w2\n";
 		int size = message.size();
 		WriteFile(hMyPipe, &size, sizeof(size), &NumberOfBytesWritten, (LPOVERLAPPED)NULL);
 
-		cout << "w_blocks\n";
+		//cout << "w_blocks\n";
 		for(int i = 0; i < NumberOfBlocks; i++)
 		{					
 			message.copy(buffer, bufferSize, i*bufferSize);		
